@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/esp32_digital_clock_modular_oop.bin'
+elf = 'build/esp32_digital_clock_modular_oop.elf'

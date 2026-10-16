@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "ESP32 Digital Clock Modular OOP",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-ds1307", "id": "rtc", "top": -120, "left": 280, "attrs": {} },
+    { "type": "board-ssd1306", "id": "oled", "top": 120, "left": 280, "attrs": { "i2cAddress": "0x3c" } },
+    { "type": "wokwi-pushbutton", "id": "btn_mode", "top": 280, "left": -120, "attrs": { "color": "red", "label": "MODE (GPIO18)", "key": "m" } },
+    { "type": "wokwi-pushbutton", "id": "btn_set", "top": 280, "left": -20, "attrs": { "color": "green", "label": "SET (GPIO19)", "key": "s" } },
+    { "type": "wokwi-pushbutton", "id": "btn_alarm", "top": 280, "left": 80, "attrs": { "color": "yellow", "label": "ALARM (MIN+) GPIO4", "key": "a" } },
+    { "type": "wokwi-pushbutton", "id": "btn_lap", "top": 280, "left": 180, "attrs": { "color": "blue", "label": "LAP (MIN-) GPIO5", "key": "l" } },
+    { "type": "wokwi-pushbutton", "id": "btn_up", "top": 380, "left": -120, "attrs": { "color": "white", "label": "UP (HOUR+) GPIO26", "key": "u" } },
+    { "type": "wokwi-pushbutton", "id": "btn_down", "top": 380, "left": -20, "attrs": { "color": "black", "label": "DOWN (HOUR-) GPIO27", "key": "d" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": -120, "left": -80, "attrs": { "volume": "0.1" } }
+  ],
+  "connections": [
+    [ "esp:GND.1", "rtc:GND", "black" ],
+    [ "esp:5V", "rtc:5V", "red" ],
+    [ "esp:21", "rtc:SDA", "yellow" ],
+    [ "esp:22", "rtc:SCL", "cyan" ],
+    [ "esp:GND.2", "oled:GND", "black" ],
+    [ "esp:3V3", "oled:VCC", "red" ],
+    [ "esp:21", "oled:SDA", "yellow" ],
+    [ "esp:22", "oled:SCL", "cyan" ],
+    [ "esp:18", "btn_mode:1.l", "green" ],
+    [ "esp:GND.3", "btn_mode:2.l", "black" ],
+    [ "esp:19", "btn_set:1.l", "green" ],
+    [ "esp:GND.3", "btn_set:2.l", "black" ],
+    [ "esp:4", "btn_alarm:1.l", "green" ],
+    [ "esp:GND.3", "btn_alarm:2.l", "black" ],
+    [ "esp:5", "btn_lap:1.l", "green" ],
+    [ "esp:GND.3", "btn_lap:2.l", "black" ],
+    [ "esp:26", "btn_up:1.l", "green" ],
+    [ "esp:GND.3", "btn_up:2.l", "black" ],
+    [ "esp:27", "btn_down:1.l", "green" ],
+    [ "esp:GND.3", "btn_down:2.l", "black" ],
+    [ "esp:25", "buzzer:2", "orange" ],
+    [ "esp:GND.1", "buzzer:1", "black" ]
+  ]
+}
